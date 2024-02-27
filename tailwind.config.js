@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         'background_black': "#181824",
+        'elements_black' : "#25273C",
       },
     },
   },

@@ -1,10 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Inconsolata:wght@200..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/948b3f0839.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        font-family: "Outfit", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+      }
+
+      .title {
+        font-family: "Arimo", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: bold;
+      }
+
+      .round input[type="checkbox"]:checked + label {
+        background: rgb(67,229,255);
+        background: linear-gradient(162deg, rgba(67,229,255,1) 0%, rgba(157,102,254,1) 100%);
+      }
+
+      .round input[type="checkbox"]:checked + label:after {
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
