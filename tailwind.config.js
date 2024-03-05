@@ -8,6 +8,7 @@ export default {
       colors: {
         'background_black': "#181824",
         'elements_black' : "#25273C",
+        'border': "#656675",
       },
     },
   },

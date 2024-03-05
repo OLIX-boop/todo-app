@@ -20,6 +20,41 @@
       src="https://kit.fontawesome.com/948b3f0839.js"
       crossorigin="anonymous"
     ></script>
+
+
+    <!-- For free font awesome icons -->
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-462d1fe84b879d730fe2180b0e0354e0.css?vsn=d"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+
     <style>
       * {
         font-family: "Outfit", sans-serif;
@@ -36,12 +71,35 @@
       }
 
       .round input[type="checkbox"]:checked + label {
-        background: rgb(67,229,255);
-        background: linear-gradient(162deg, rgba(67,229,255,1) 0%, rgba(157,102,254,1) 100%);
+        background: rgb(67, 229, 255);
+        background: linear-gradient(
+          162deg,
+          rgba(67, 229, 255, 1) 0%,
+          rgba(157, 102, 254, 1) 100%
+        );
       }
 
       .round input[type="checkbox"]:checked + label:after {
         opacity: 1;
+      }
+
+      textarea:focus,
+      input:focus {
+        outline: none;
+      }
+
+      .tasks-container::-webkit-scrollbar {
+        width: 0.5rem;
+      }
+
+      .tasks-container::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 0px rgb(255, 255, 255);
+        border-radius: 10px;
+      }
+
+      .tasks-container::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 50px rgb(107 114 128);
       }
     </style>
   </head>
