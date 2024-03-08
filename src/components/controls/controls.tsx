@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const Controls = ({tasks,filter}: {tasks: Array<object>, filter: (type: string) => void}) => {
+const Controls = ({tasks, filter, clrCompleted}: {tasks: Array<object>, filter: (type: string) => void, clrCompleted:() => void}) => {
   const selectors = ["All", "Active", "Completed"];
-  const style = "hover:text-slate-100 ";
+  const style = "dark:hover:text-white hover:text-gray-950";
   const [currentSelector, setCurrentSelector] = useState("All"); //All, Active, Completed
 
   return (
@@ -27,7 +27,7 @@ const Controls = ({tasks,filter}: {tasks: Array<object>, filter: (type: string) 
           ))}
         </div>
 
-        <p className={"text-gray-500 " + style}>Clear Completed</p>
+        <p onClick={clrCompleted} className={"text-gray-500 " + style}>Clear Completed</p>
       </div>
     </>
   );

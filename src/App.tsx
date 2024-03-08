@@ -7,6 +7,18 @@ import Task from "./components/task/task";
 import Controls from "./components/controls/controls";
 
 function App() {
+  useEffect(()=> {
+    console.log("IA")
+    window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change',({ matches }) => {
+    if (matches) {
+      console.log("change to dark mode!")
+    } else {
+      console.log("change to light mode!")
+    }
+    })
+  }, [])
+
   const [Tasks, setTasks] = useState([
     { task: "Fare la cacca", completed: false },
     { task: "Allenamento", completed: true },
@@ -48,17 +60,21 @@ function App() {
     setTasks((prevTasks) => prevTasks.filter((_, index) => index !== i));
   };
 
+  const clearCompleted = () => {
+    setTasks((prevTasks) => prevTasks.filter((e) => !e.completed));
+  }
+
   return (
     <>
       <BackGround />
 
-      <div className="content w-[40vw] h-[100vh] bg-red m-auto flex justify-center items-center">
+      <div className="content w-[40vw] h-[100vh] bg-red m-auto flex justify-center items-center ">
         <div className="w-full h-[80%]">
           <Header />
 
           <Input createNewMSG={createNewTask} />
 
-          <div className="todos-container mt-6 bg-elements_black rounded-md">
+          <div className="todos-container mt-6 dark:bg-elements_black bg-white rounded-md shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
             <div className="tasks-container overflow-auto max-h-[57vh]">
               {filteredTsk.tsks.map((e, i) => (
                 <Task
@@ -72,7 +88,7 @@ function App() {
               ))}
             </div>
 
-            <Controls tasks={Tasks} filter={filterMessages} />
+            <Controls tasks={Tasks} filter={filterMessages} clrCompleted={clearCompleted} />
           </div>
         </div>
       </div>
