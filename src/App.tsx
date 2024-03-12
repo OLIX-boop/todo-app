@@ -7,16 +7,12 @@ import Task from "./components/task/task";
 import Controls from "./components/controls/controls";
 
 function App() {
-  useEffect(()=> {
-    console.log("IA")
-    window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change',({ matches }) => {
-    if (matches) {
-      console.log("change to dark mode!")
-    } else {
-      console.log("change to light mode!")
-    }
-    })
+  const [dark, setDark] = useState(true);
+  useEffect(()=> { 
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDark(isDark);
+    if (isDark) document.body.classList.add('dark');
+    else document.body.classList.remove('dark');
   }, [])
 
   const [Tasks, setTasks] = useState([
@@ -66,11 +62,11 @@ function App() {
 
   return (
     <>
-      <BackGround />
+      <BackGround dark={dark} />
 
       <div className="content w-[40vw] h-[100vh] bg-red m-auto flex justify-center items-center ">
         <div className="w-full h-[80%]">
-          <Header />
+          <Header dark={dark} setDark={setDark} />
 
           <Input createNewMSG={createNewTask} />
 
