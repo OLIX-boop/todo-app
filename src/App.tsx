@@ -6,6 +6,11 @@ import Input from "./components/input/input";
 import Task from "./components/task/task";
 import Controls from "./components/controls/controls";
 
+interface Task {
+  task:string,
+  completed: boolean
+}
+ 
 function App() {
   const [dark, setDark] = useState(true);
   useEffect(()=> { 
@@ -15,7 +20,7 @@ function App() {
     else document.body.classList.remove('dark');
   }, [])
 
-  const [Tasks, setTasks] = useState([
+  const [Tasks, setTasks] = useState<Array<Task>>([
     { task: "Fare la cacca", completed: false },
     { task: "Allenamento", completed: true },
   ]);
@@ -24,21 +29,30 @@ function App() {
     tsks: [...Tasks],
   });
 
-  const editMSG = () => {};
+  const toggleCompleted = (completed:boolean, index:number) => {
+    setTasks(prev => {
+      prev[index].completed=completed;
+        filterMessages(filteredTsk.type, prev);
+        console.log(completed);
+        console.log(prev[index]);
+      return prev;
+    })
+  };
 
-  const filterMessages = (type: string) => {
+  const filterMessages = (type: string, taks?:Array<Task>) => {
     // ["All", "Active", "Completed"]
+    const tsk = taks ? taks : Tasks;
     if (type === "Active")
       setFilteredStk({
         type: "Active",
-        tsks: Tasks.filter((tsk) => !tsk.completed),
+        tsks: tsk.filter((tasks) => !tasks.completed),
       });
     else if (type === "Completed")
       setFilteredStk({
         type: "Completed",
-        tsks: Tasks.filter((tsk) => tsk.completed),
+        tsks: tsk.filter((tasks) => tasks.completed),
       });
-    else setFilteredStk({ type: "All", tsks: [...Tasks] }); // All
+    else setFilteredStk({ type: "All", tsks: [...tsk] }); // All
   };
 
   useEffect(() => {
@@ -78,7 +92,7 @@ function App() {
                   msg={e.task}
                   completed={e.completed}
                   index={i}
-                  edit={editMSG}
+                  toggleCompleted={toggleCompleted}
                   deleteTsk={deleteMSG}
                 />
               ))}
